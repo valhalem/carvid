@@ -17,4 +17,6 @@ class Article(models.Model):
     votes = models.IntegerField()
     category = models.IntegerField(max_length=1, db_index=True, choices=CATEGORY, default=None, verbose_name='Kategoria' )
     video_url = models.CharField(max_length=100)
+    nickname = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
 
