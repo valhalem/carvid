@@ -2,7 +2,9 @@ title :{{ article_title }}
 <br>
 video_url: {{ article_video_url }}
 <br>
-<a href="/tag/{{ article_tags }}/"a> {{ article_tags }}</a>
+{% for tag in article_tags %}
+<a class="article__tag" href="/tag/{{tag}}/">{{ tag }}</a>
+{% endfor %}
 <br>
 lead : {{ article_lead }}
 <br>
