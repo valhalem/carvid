@@ -12,6 +12,7 @@ def article_details(request, article):
 
     return render_to_response( 'details.html',
             {
+		'article_title': idk.title,
                 'article_id': idk ,
                 'article_video_url': idk.video_url,
                 'article_tags' : idk.tags.names(),
