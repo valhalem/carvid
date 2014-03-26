@@ -1,9 +1,15 @@
 {% if articles %}
-    <ul>
     {% for article in articles %}
-        <li><a href="/article/{{ article.id }}/">{{ article.title }}</a></li>
+    <br>
+    {{ article.id }} <br>
+<!--
+    {{ article.lead }} <br>
+    {{ article.pud_date }} <br>
+    {{ article.category }} <br>
+    {{ article.vodeo_url }} <br>
+    {{ article.city }} <br> -->
+    <a href="/article/{{ article.id }}/">{{ article.title }}</a>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
