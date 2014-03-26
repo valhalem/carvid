@@ -12,7 +12,7 @@ def article_details(request, article):
 
     return render_to_response( 'details.html',
             {
-                'article_title': idk ,
+                'article_id': idk ,
                 'article_video_url': idk.video_url,
                 'article_tags' : idk.tags.names(),
                 'article_lead': idk.lead ,
@@ -32,6 +32,4 @@ def tags_search(request, tag):
     return render_to_response( 'tag_list.html',
             { 
               'list': by_tag ,
-#              'title': by_tag.id ,
-#              'lead': by_tag.pub_date, 
               })

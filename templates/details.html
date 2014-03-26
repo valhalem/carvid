@@ -1,15 +1,15 @@
-title :{{ article_title }}
+{{ article_title }}
 <br>
-video_url: {{ article_video_url }}
+{{ article_lead }}
+<br>
+{{ article_city }}
+<br>
+{{ article_video_url }}
 <br>
 {% for tag in article_tags %}
+<br>
 <a class="article__tag" href="/tag/{{tag}}/">{{ tag }}</a>
 {% endfor %}
 <br>
-lead : {{ article_lead }}
+{{ nickname }}
 <br>
-votes: {{ article_votes }}
-<br>
-nickname : {{ nickname }}
-<br>
-city : {{ city }}
