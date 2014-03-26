@@ -113,7 +113,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/konrad/Documents/templates/"
+    "/home/kstachowicz/Documents/carvid/templates/"
 )
 
 INSTALLED_APPS = (
@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      'article',
+     'taggit',
 )
 
 # A sample logging configuration. The only tangible logging
