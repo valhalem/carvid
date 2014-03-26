@@ -21,18 +21,17 @@ def article_details(request, article):
                 'city' : idk.city , })
 
 def tags( request ):
-    articles_by_tag = Article.objects.all()
     return render_to_response( 'tags.html', 
-            {'articles' : articles_by_tag,})
+            {'tags' : Article.tags.all(),})
 
 def tags_search(request, tag):
     try:
-        by_tag = Article.objects.filter(tags__name__in=[tag]).order_by('-pub_date')[0]
+        by_tag = Article.objects.filter(tags__name__in=[tag]).order_by('-pub_date')
     except IndexError:
         raise Http404
     return render_to_response( 'tag_list.html',
             { 
               'list': by_tag ,
-              'title': by_tag.id ,
-              'lead': by_tag.pub_date, 
+#              'title': by_tag.id ,
+#              'lead': by_tag.pub_date, 
               })
