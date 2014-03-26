@@ -1,5 +1,5 @@
 # Create your views here.
-from django.template import Context, loader
+from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
 from article.models import Article
 
@@ -25,18 +25,15 @@ def article_details(request, article):
 
 def tags( request ):
     articles_by_tag = Article.objects.all()
-    tt = loader.get_template('tags.html')
-    ct = Context({
-        'articles': articles_by_tag, })
-    return HttpResponse(tt.render(ct))
-	
-def tags_search(request, tag):
-    by_tag = Article.objects.filter(tags__name__in=[tag])
-    ty = loader.get_template('tag_list.html')
-    tt = Context({ 
-        'list': by_tag , 
-        'title': by_tag[0].video_url ,
-        'lead': by_tag[0].pub_date,
+    return render_to_response( 'tags.html', 
+            {'articles' : articles_by_tag,})
 
-        })
-    return HttpResponse(ty.render(tt)) 
+def tags_search(request, tag):
+    try:
+        by_tag = Article.objects.filter(tags__name__in=[tag]).order_by('-pub_date')[0]
+    except IndexError:
+        raise Http404
+    return render_to_response( 'tag_list.html',
+            { 'list': by_tag,
+              'title': by_tag.video_url ,
+              'lead': by_tag.pub_date, })
