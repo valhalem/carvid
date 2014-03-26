@@ -14,8 +14,13 @@ def article_details(request, article):
 	td = loader.get_template('details.html')
 	cd = Context({
 		'article_title': idk ,
-		'article_title2': idk.video_url })
-	print idk, article
+		'article_video_url': idk.video_url,
+        'article_tags' : idk.tags.all(),
+        'article_lead': idk.lead ,
+        'article_votes': idk.votes,
+        'nickname' : idk.nickname ,
+        'city' : idk.city ,
+        })
 	return HttpResponse(td.render(cd))
 	
 
