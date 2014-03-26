@@ -31,10 +31,12 @@ def tags( request ):
     return HttpResponse(tt.render(ct))
 	
 def tags_search(request, tag):
-    print tag, request
     by_tag = Article.objects.filter(tags__name__in=[tag])
     ty = loader.get_template('tag_list.html')
     tt = Context({ 
-        'list': by_tag, })
-    print tag, by_tag
+        'list': by_tag , 
+        'title': by_tag[0].video_url ,
+        'lead': by_tag[0].pub_date,
+
+        })
     return HttpResponse(ty.render(tt)) 
