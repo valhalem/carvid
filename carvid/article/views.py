@@ -22,5 +22,19 @@ def article_details(request, article):
         'city' : idk.city ,
         })
 	return HttpResponse(td.render(cd))
-	
 
+def tags( request ):
+    articles_by_tag = Article.objects.all()
+    tt = loader.get_template('tags.html')
+    ct = Context({
+        'articles': articles_by_tag, })
+    return HttpResponse(tt.render(ct))
+	
+def tags_search(request, tag):
+    print tag, request
+    by_tag = Article.objects.filter(tags__name__in=[tag])
+    ty = loader.get_template('tag_list.html')
+    tt = Context({ 
+        'list': by_tag, })
+    print tag, by_tag
+    return HttpResponse(ty.render(tt)) 

@@ -16,4 +16,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^article/$', 'article.views.index'),
     url(r'^article/(?P<article>\d+)/$', 'article.views.article_details'),
+    url(r'^tags/', 'article.views.tags'),
+    url(r'^tag/(?P<tag>\w+)/$', 'article.views.tags_search'),
 )
