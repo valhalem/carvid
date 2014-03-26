@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'carvid.views.home', name='home'),
+    url(r'^$', 'article.views.index',),
     # url(r'^carvid/', include('carvid.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
