@@ -14,7 +14,7 @@ def article_details(request, article):
             {
                 'article_title': idk ,
                 'article_video_url': idk.video_url,
-                'article_tags' : idk.tags.all(),
+                'article_tags' : idk.tags.names()[0],
                 'article_lead': idk.lead ,
                 'article_votes': idk.votes,
                 'nickname' : idk.nickname ,
