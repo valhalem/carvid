@@ -1,5 +1,12 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from django.core.files.base import ContentFile
+import Image
+
+try:
+	from cStringIO import StringIO
+except ImportError:
+	from StringIO import StringIO
 
 # Create your models here.
 
@@ -21,6 +28,21 @@ class Article(models.Model):
     nickname = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     tags = TaggableManager()
+    image = models.FileField(upload_to='images/')
+
+    def get_thumbnail(self, size = None ):
+	base = Image.open(StringIO(chosen_image.image.read()))
+
+	if not size:
+		rate = 0.2
+		size = base.size
+		size = (int(size[0] * rate), int(size[1] * rate))
+	base.thumbnail(size)
+	thmibnail = StringIO()
+	base.save(thumbnail, "PNG")
+	thumbnail = ContentFile(thumbnail.getvalue())
+	return thumbnail
 
     def __unicode__(self):
 	    return self.title
+

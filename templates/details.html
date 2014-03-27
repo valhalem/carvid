@@ -1,17 +1,23 @@
 <a href="{% url index %}">HOME</a>
 <br>
-{{ article_title }}
+{{ title }}
 <br>
-{{ article_lead }}
+{{ lead }}
 <br>
-{{ article_city }}
+{{ city }}
 <br>
-{{ article_video_url }}
+{{ video_url }}
 <br>
 {% for tag in article_tags %}
-<br>
-<a class="article__tag" href="/tag/{{tag}}/">{{ tag }}</a>
+
+<a class="article__tag" href="/tag/{{tag}}/">{{ tag }}</a>, 
 {% endfor %}
 <br>
 {{ nickname }}
+<br>
+{{ pud_date }}
+<br>
+{{ category }}
+<br>
+{{ votes }}
 <br>

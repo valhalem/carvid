@@ -12,14 +12,18 @@ def article_details(request, article):
 
     return render_to_response( 'details.html',
             {
-		'article_title': idk.title,
-                'article_id': idk ,
-                'article_video_url': idk.video_url,
-                'article_tags' : idk.tags.names(),
-                'article_lead': idk.lead ,
-                'article_votes': idk.votes,
+		'title': idk.title,
+                'id': idk ,
+                'video_url': idk.video_url,
+                'tags' : idk.tags.names(),
+                'lead': idk.lead ,
+                'votes': idk.votes,
                 'nickname' : idk.nickname ,
-                'city' : idk.city , })
+                'city' : idk.city , 
+		'category' : idk.category,
+		'pub_date': idk.pub_date,
+		
+		})
 
 def tags( request ):
     return render_to_response( 'tags.html', 
@@ -34,3 +38,22 @@ def tags_search(request, tag):
             { 
               'list': by_tag ,
               })
+"""
+def list(request):
+    if request.method == 'POST':
+	from = ImageForm(request.POST, request.FILES)
+	if form.is_valid():
+	    newimg = Aricle(imgfile = request.FILES['docfile'])
+	    newimg.save()
+
+	    return HttpResponseRedirect(reverse('article.views.list'))
+    else:
+	form ImageForm()
+
+    images = ImageForm.object.all()
+
+    return render_to_response( 'list.html',
+	{ 'documents' : documents, 'form': form },
+	context_instance = RequestContext(request)
+	)
+"""

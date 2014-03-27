@@ -1,7 +1,9 @@
 import os
 
 # Django settings for carvid project.
-BASE_DIR = os.getcwd()
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+print 
+print 'base_dir : '+BASE_DIR
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -52,12 +54,14 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
 
+MEDIA_ROOT = BASE_DIR + '/media/'
+print 'media_root: '+ MEDIA_ROOT
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
+
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -115,7 +119,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     "/home/konrad/Documents/carvid/templates/"
 )
-print TEMPLATE_DIRS
+print 'templates_dir: '+TEMPLATE_DIRS
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
