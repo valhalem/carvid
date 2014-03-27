@@ -1,3 +1,4 @@
+#from django.contrib.comments.models import FreeComment
 from django.conf.urls import patterns, include, url
 from django.conf.urls.defaults import *
 import settings
@@ -22,4 +23,5 @@ urlpatterns = patterns('',
     url(r'^tags/', 'article.views.tags'),
     url(r'^tag/(?P<tag>\w+)/$', 'article.views.tags_search'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
+    (r'^comments/', include('django.contrib.comments.urls')),
 )

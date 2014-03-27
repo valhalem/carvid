@@ -134,6 +134,7 @@ INSTALLED_APPS = (
      'article',
      'taggit',
      'easy_thumbnails',
+     'django.contrib.comments',
 )
 
 
