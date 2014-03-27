@@ -1,7 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
-from django.core.files.base import ContentFile
-import Image
+from thumbs import ImageWithThumbsField
 
 try:
 	from cStringIO import StringIO
@@ -28,20 +27,8 @@ class Article(models.Model):
     nickname = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     tags = TaggableManager()
-    image = models.FileField(upload_to='images/')
-
-    def get_thumbnail(self, size = None ):
-	base = Image.open(StringIO(chosen_image.image.read()))
-
-	if not size:
-		rate = 0.2
-		size = base.size
-		size = (int(size[0] * rate), int(size[1] * rate))
-	base.thumbnail(size)
-	thmibnail = StringIO()
-	base.save(thumbnail, "PNG")
-	thumbnail = ContentFile(thumbnail.getvalue())
-	return thumbnail
+    photo = ImageWithThumbsField(upload_to='images', sizes=((125,125),(200,200)))
+    second_photo = ImageWithThumbsField(upload_to='images')
 
     def __unicode__(self):
 	    return self.title

@@ -22,6 +22,7 @@ def article_details(request, article):
                 'city' : idk.city , 
 		'category' : idk.category,
 		'pub_date': idk.pub_date,
+		'thumbnail': idk.photo.url_200x200,
 		
 		})
 
@@ -38,22 +39,5 @@ def tags_search(request, tag):
             { 
               'list': by_tag ,
               })
-"""
-def list(request):
-    if request.method == 'POST':
-	from = ImageForm(request.POST, request.FILES)
-	if form.is_valid():
-	    newimg = Aricle(imgfile = request.FILES['docfile'])
-	    newimg.save()
 
-	    return HttpResponseRedirect(reverse('article.views.list'))
-    else:
-	form ImageForm()
 
-    images = ImageForm.object.all()
-
-    return render_to_response( 'list.html',
-	{ 'documents' : documents, 'form': form },
-	context_instance = RequestContext(request)
-	)
-"""
