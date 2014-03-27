@@ -23,7 +23,7 @@ def article_details(request, article):
 		'category' : idk.category,
 		'pub_date': idk.pub_date,
 		'thumbnail': idk.photo.url_200x200,
-		
+			
 		})
 
 def tags( request ):
@@ -39,5 +39,4 @@ def tags_search(request, tag):
             { 
               'list': by_tag ,
               })
-
 
