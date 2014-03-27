@@ -2,7 +2,6 @@
 {% if articles %}
     {% for article in articles %}
     <br>
-    {{ article.id }} <br>
 <!--
     {{ article.lead }} <br>
     {{ article.pud_date }} <br>
@@ -10,6 +9,10 @@
     {{ article.vodeo_url }} <br>
     {{ article.city }} <br> -->
     <a href="/article/{{ article.id }}/">{{ article.title }}</a>
+    <br>
+    <img src="{{ article.photo.url_125x125 }}">
+    <br>
+    <img src="{{ article.photo.url_200x200 }}">
     {% endfor %}
 {% else %}
     <p>No polls are available.</p>
