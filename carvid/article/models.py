@@ -23,12 +23,12 @@ class Article(models.Model):
     pub_date = models.DateTimeField('Data publikacji')
     votes = models.IntegerField()
     category = models.IntegerField(max_length=1, db_index=True, choices=CATEGORY, default=None, verbose_name='Kategoria' )
-    video_url = models.CharField(max_length=100)
+    video_url = models.URLField()
     nickname = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     tags = TaggableManager()
     photo = ImageWithThumbsField(upload_to='images', sizes=((125,125),(200,200)))
-    second_photo = ImageWithThumbsField(upload_to='images')
+    #second_photo = ImageWithThumbsField(upload_to='images')
 
     def __unicode__(self):
 	    return self.title
