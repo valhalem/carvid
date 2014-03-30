@@ -1,0 +1,9 @@
+{% extends "carvid/article.html" %}{% load i18n %}
+
+{% block headtitle %}{% block title %}{% trans "Responses for page" %}{% endblock %}{% endblock %}
+
+{% block main %}
+          <div id="content" class="clearfix">
+            {% block content %}{% endblock %}
+          </div>
+{% endblock %}

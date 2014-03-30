@@ -1,5 +1,10 @@
 import os
 
+
+#DEV
+CSRF_FAILURE_VIEW = False
+FLUENT_CONTENTS_CACHE_OUTPUT = False
+
 # Django settings for carvid project.
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 print 
@@ -135,6 +140,9 @@ INSTALLED_APPS = (
      'taggit',
      'easy_thumbnails',
      'django.contrib.comments',
+     #'fluent_contents.plugins.commentsarea',
+     'fluent_comments',
+     'crispy_forms',
 )
 
 
