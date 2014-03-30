@@ -2,13 +2,12 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
 from article.models import Article
-
-#ominiecie csrf
-#from django.views.decorators.csrf import csrf_exempt
+from django.template import RequestContext
 
 def index(request):
     articles = Article.objects.all().order_by('-pub_date')
-    return render_to_response( 'index.html', { 'articles' : articles })
+    return render_to_response( 'index.html', { 'articles' : articles }, 
+		context_instance=RequestContext(request))
 
 def article_details(request, article):
     idk = Article.objects.get(pk=article)
@@ -27,11 +26,13 @@ def article_details(request, article):
 		'pub_date': idk.pub_date,
 		'thumbnail': idk.photo.url_200x200,
 			
-		})
+		},
+		context_instance=RequestContext(request))
 
 def tags( request ):
     return render_to_response( 'tags.html', 
-            {'tags' : Article.tags.all(),})
+            {'tags' : Article.tags.all(),},
+		context_instance=RequestContext(request))
 
 def tags_search(request, tag):
     try:
@@ -41,5 +42,6 @@ def tags_search(request, tag):
     return render_to_response( 'tag_list.html',
             { 
               'list': by_tag ,
-              })
+              },
+		context_instance=RequestContext(request) )
 

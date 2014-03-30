@@ -23,5 +23,5 @@ urlpatterns = patterns('',
     url(r'^tags/', 'article.views.tags'),
     url(r'^tag/(?P<tag>\w+)/$', 'article.views.tags_search'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
-    url(r'^article/comments/', include('django.contrib.comments.urls')),
+    url(r'^comments/', include('fluent_comments.urls')),
 )
